@@ -1,5 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
+import { Db } from './services/db/db';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class App {
   hasScrollbar = false;
 
   constructor(
-    public db: DbService,
+    public db: Db,
     public router: Router,
     private cdr: ChangeDetectorRef,
   ) {

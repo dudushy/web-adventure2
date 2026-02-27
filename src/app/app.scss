@@ -1,0 +1,96 @@
+@import "../styles.scss";
+
+:host {
+  --mainGradient: linear-gradient(180deg, #eeeeee, #999999);
+
+  position: relative;
+  color: $dark;
+}
+
+main {
+  position: relative;
+  @include fixedHeight(100%);
+  @include fixedWidth(100%);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  &::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include square(calc(var(--responsiveUnit) * 100));
+    background: var(--mainGradient);
+    z-index: -1;
+    @include allVendors(animation, 50s spin linear infinite);
+  }
+}
+
+router-outlet {
+  display: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--headerGradient);
+  @include fixedWidth(100%);
+  @include fixedHeight(var(--headerHeight));
+
+  a {
+    margin: 0;
+    font-size: calc(var(--responsiveUnit) * 1);
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: $dark;
+    text-decoration: none;
+    @include allVendors(transition, all 250ms ease-in-out);
+    &:hover {
+      color: $danger;
+    }
+  }
+}
+
+#main-content {
+  @include fixedWidth(100%);
+  min-height: unset;
+  background: var(--contentGradient);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--footerGradient);
+  @include fixedWidth(100%);
+  @include fixedHeight(var(--footerHeight));
+
+  h3 {
+    font-size: calc(var(--responsiveUnit) * 0.6);
+    text-align: center;
+    font-family: sans-serif;
+    color: $dark;
+
+    i {
+      color: $danger;
+    }
+
+    a {
+      color: $dark;
+      font-family: monospace;
+      @include allVendors(transition, all 250ms ease-in-out);
+      &:hover {
+        color: $danger;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
