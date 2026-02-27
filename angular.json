@@ -31,7 +31,17 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "polyfills": [
+              "@angular/localize/init"
+            ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "import"
+                ]
+              }
+            }
           },
           "configurations": {
             "production": {
