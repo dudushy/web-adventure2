@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'test', component: Test },
 
-  { path: 'dummy', component: Dummy, data: { status: 'wip', type: 'random', description: 'Dummy' } },
+  { path: 'dummy', component: Dummy, data: { status: 'wip', type: 'random', description: 'Testing stuff' } },
 
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

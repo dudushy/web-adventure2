@@ -24,7 +24,12 @@
   align-items: center;
 }
 
+[class^="col"],
+[class*=" col"] {
+  background: $secondary;
+  border: calc(var(--responsiveUnit) * 0.1) solid $dark;
+}
+
 i {
-  font-size: calc(var(--responsiveUnit) * 2);
-  color: $danger;
+  color: $warning;
 }

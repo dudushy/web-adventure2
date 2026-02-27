@@ -1,12 +1,3 @@
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
-// Update the import directory to point to its location within node_modules
-$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
-
-// Import the Sass files
-@import "bootstrap-icons/font/bootstrap-icons";
-
 $void: #ffffff00;
 $primary: #3880ff;
 $secondary: #3dc2ff;
