@@ -1,19 +1,14 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, signal, TemplateRef, WritableSignal } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { App } from '../../../app';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap/modal';
-import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap/datepicker';
 
 @Component({
   selector: 'app-dummy',
-  imports: [NgbInputDatepicker],
+  imports: [],
   templateUrl: './dummy.html',
   styleUrl: './dummy.scss',
 })
 export class Dummy implements OnInit, OnDestroy {
   title = 'Dummy';
-
-  private modalService = inject(NgbModal);
-	closeResult: WritableSignal<string> = signal('');
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -42,26 +37,4 @@ export class Dummy implements OnInit, OnDestroy {
 
     this.updateView();
   }
-
-  open(content: TemplateRef<any>) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-			(result) => {
-				this.closeResult.set(`Closed with: ${result}`);
-			},
-			(reason) => {
-				this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
-			},
-		);
-	}
-
-	private getDismissReason(reason: any): string {
-		switch (reason) {
-			case ModalDismissReasons.ESC:
-				return 'by pressing ESC';
-			case ModalDismissReasons.BACKDROP_CLICK:
-				return 'by clicking on a backdrop';
-			default:
-				return `with: ${reason}`;
-		}
-	}
 }
