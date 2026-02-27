@@ -1,0 +1,57 @@
+<div id="{{ title }}-content" class="pageContent">
+  <div class="cards">
+    @for (page of app.allPages | keyvalue: app.defaultOrder; track page.key) {
+      <a
+        class="card"
+        [attr.type]="$any(page.value)['data']['type']"
+        href="{{ $any(page.value)['path'] }}"
+      >
+        <div class="row1">
+          <div class="cardNo">#{{ page.key }}</div>
+          <div class="cardType">
+            {{ $any(page.value)['data']['type'] }}
+          </div>
+        </div>
+        <div class="row2">
+          <div class="cardTitle">
+            {{ $any(page.value)['path'] }}
+          </div>
+          <div class="cardDescription">
+            {{ $any(page.value)['data']['description'] }}
+          </div>
+        </div>
+        <div class="row3">
+          @if ($any(page.value)['data']['status'] == 'done') {
+            <div
+              class="cardStatus"
+              [attr.warningType]="$any(page.value)['data']['status']"
+              title="Done"
+            >
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+          }
+
+          @if ($any(page.value)['data']['status'] == 'wip') {
+            <div
+              class="cardStatus"
+              [attr.warningType]="$any(page.value)['data']['status']"
+              title="Work In Progress"
+            >
+              <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+          }
+
+          @if ($any(page.value)['data']['status'] == 'rework') {
+            <div
+              class="cardStatus"
+              [attr.warningType]="$any(page.value)['data']['status']"
+              title="Rework Needed"
+            >
+              <i class="bi bi-wrench-adjustable-circle-fill"></i>
+            </div>
+          }
+        </div>
+      </a>
+    }
+  </div>
+</div>

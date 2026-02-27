@@ -1,0 +1,214 @@
+@import "../../../styles.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: $dark;
+}
+
+.pageContent {
+  min-height: var(--defaultContentHeight);
+  padding: 1%;
+  width: 100%;
+  // max-width: 1200px;
+  font-size: calc(var(--responsiveUnit) * 0.8);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-inline: calc(var(--responsiveUnit) * 2.5);
+  @include portrait {
+    margin-inline: calc(var(--responsiveUnit) * 1);
+  }
+
+  .card {
+    all: unset;
+
+    --color: #fff;
+
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--color);
+    border-radius: calc(var(--responsiveUnit) * 0.3);
+    @include square(calc(var(--responsiveUnit) * 6.5));
+    margin: calc(var(--responsiveUnit) * 0.2);
+    border: calc(var(--responsiveUnit) * 0.08) solid;
+    border-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include portrait {
+      @include square(calc(var(--responsiveUnit) * 6.25));
+    }
+
+    &,
+    * {
+      transition: all 0.2s ease-in-out;
+    }
+
+    &[type="form"] {
+      --color: #a8fffb;
+    }
+
+    &[type="loader"] {
+      --color: #a8ffac;
+    }
+
+    &[type="interactive"] {
+      --color: #a8b8ff;
+    }
+
+    &[type="game"] {
+      --color: #ffa8f8;
+    }
+
+    &[type="random"] {
+      --color: #ffd9a8;
+    }
+
+    &[type="clone"] {
+      --color: #ffaba8;
+    }
+
+    .row1 {
+      display: flex;
+      justify-content: space-between;
+
+      .cardNo {
+        background: color-mix(in srgb, var(--color), white 30%);
+        padding: calc(var(--responsiveUnit) * 0.3);
+        padding-top: calc(var(--responsiveUnit) * 0.15);
+        padding-left: calc(var(--responsiveUnit) * 0.15);
+        border: calc(var(--responsiveUnit) * 0.08) solid;
+        border-color: #000;
+        border-top: none;
+        border-left: none;
+        border-bottom-right-radius: calc(var(--responsiveUnit) * 0.5);
+        font-size: calc(var(--responsiveUnit) * 0.5);
+        @include portrait {
+          font-size: calc(var(--responsiveUnit) * 0.6);
+        }
+      }
+
+      .cardType {
+        background: color-mix(in srgb, var(--color), black 20%);
+        padding: calc(var(--responsiveUnit) * 0.3);
+        padding-top: calc(var(--responsiveUnit) * 0.15);
+        padding-right: calc(var(--responsiveUnit) * 0.15);
+        border: calc(var(--responsiveUnit) * 0.08) solid;
+        border-color: #000;
+        border-top: none;
+        border-right: none;
+        border-bottom-left-radius: calc(var(--responsiveUnit) * 0.5);
+        font-size: calc(var(--responsiveUnit) * 0.45);
+        @include portrait {
+          font-size: calc(var(--responsiveUnit) * 0.525);
+        }
+      }
+    }
+
+    .row2 {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      .cardTitle {
+        margin-top: calc(var(--responsiveUnit) * 0.1);
+        font-family: "Apple-San Francisco";
+        font-size: calc(var(--responsiveUnit) * 0.75);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        // text-wrap: wrap;
+        margin-inline: calc(var(--responsiveUnit) * 0.1);
+        text-transform: uppercase;
+        @include portrait {
+          font-size: calc(var(--responsiveUnit) * 0.7);
+        }
+      }
+
+      .cardDescription {
+        margin-top: calc(var(--responsiveUnit) * 0.1);
+        font-family: "Comfortaa";
+        font-size: calc(var(--responsiveUnit) * 0.45);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-inline: calc(var(--responsiveUnit) * 0.1);
+        @include portrait {
+          font-size: calc(var(--responsiveUnit) * 0.5);
+        }
+      }
+    }
+
+    .row3 {
+      display: flex;
+
+      .cardStatus {
+        background: color-mix(in srgb, var(--color), white 60%);
+        padding: calc(var(--responsiveUnit) * 0.3);
+        padding-bottom: calc(var(--responsiveUnit) * 0.15);
+        padding-left: calc(var(--responsiveUnit) * 0.15);
+        border: calc(var(--responsiveUnit) * 0.08) solid;
+        border-color: #000;
+        border-bottom: none;
+        border-left: none;
+        border-top-right-radius: calc(var(--responsiveUnit) * 0.5);
+        font-size: calc(var(--responsiveUnit) * 0.5);
+        @include portrait {
+          font-size: calc(var(--responsiveUnit) * 0.5);
+        }
+
+        &[warningType="wip"] {
+          i {
+            color: #ff9c00;
+          }
+        }
+        &[warningType="done"] {
+          i {
+            color: #00ff00;
+          }
+        }
+        &[warningType="rework"] {
+          i {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      background: black;
+
+      &,
+      * {
+        border-color: var(--color) !important;
+
+        .cardNo {
+          background: black;
+          color: var(--color);
+        }
+
+        .cardTitle,
+        .cardDescription {
+          color: var(--color);
+        }
+
+        .cardType {
+          background: var(--color);
+        }
+
+        .cardStatus {
+          background: black;
+        }
+      }
+    }
+  }
+}
