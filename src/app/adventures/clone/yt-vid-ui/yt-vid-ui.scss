@@ -1,0 +1,126 @@
+@import "../../../../styles.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: $dark;
+}
+
+.pageContent {
+    min-height: var(--defaultContentHeight);
+    padding: 1%;
+    width: 100%;
+    max-width: 1200px;
+    font-size: calc(var(--responsiveUnit) * 0.8);
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.box {
+    background: grey;
+    width: 100%;
+    height: calc(var(--responsiveUnit) * 4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+
+    .video-bg {
+        width: 100%;
+        height: 100%;
+        background: yellow;
+        position: absolute;
+        animation: spin 20s linear infinite;
+        filter: blur(calc(var(--responsiveUnit) * 3));
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 40%;
+            background: green;
+            animation: spin 1.5s linear infinite;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 70%;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: blue;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    .video-timer,
+    .video-controls {
+        --vc-margin: calc(var(--responsiveUnit) * 0.5);
+
+        z-index: 1;
+        margin-inline: var(--vc-margin);
+        margin-block: calc(var(--vc-margin) * 0.3);
+    }
+
+    .video-timer {
+        height: calc(var(--responsiveUnit) * 0.25);
+        background: red;
+    }
+
+    .video-controls {
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .video-controls-left,
+        .video-controls-right {
+            display: flex;
+            gap: calc(var(--responsiveUnit) * 0.5);
+        }
+
+        .play-pause,
+        .volume,
+        .timer,
+        .autoplay,
+        .captions,
+        .settings,
+        .fullscreen {
+            background: transparentize($color: $black, $amount: 0.5);
+            color: $white;
+            padding: calc(var(--responsiveUnit) * 0.2) calc(var(--responsiveUnit) * 0.3);
+            border-radius: calc(var(--responsiveUnit) * 1);
+            font-size: calc(var(--responsiveUnit) * 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
