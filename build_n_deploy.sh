@@ -21,7 +21,7 @@ echo $TITLE "- - - - - - - - - - - - - - - - - - - - - - - - - -"
 echo $TITLE "setup config done!"
 
 echo $TITLE "run"
-ng build --base-href $PAGE_URL
+npx ng build --base-href $PAGE_URL
 npx angular-cli-ghpages --dir=dist/$PROJECT_NAME/browser --message=$COMMIT_MESSAGE
 
 echo $TITLE "finished."
