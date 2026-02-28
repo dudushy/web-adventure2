@@ -34,5 +34,5 @@ nvm install && nvm use
 
 ## Create new adventure:
 ```bash
-ng g component adventures/ADVENTURE_TYPE/ADVENTURE_NAME
+npx ng g component adventures/ADVENTURE_TYPE/ADVENTURE_NAME
 ```
